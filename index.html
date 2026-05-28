@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Memory Taichi — Rutinitas Tai Chi 7 Hari untuk Bantu Otak Tetap Aktif</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+
+/* ─── RESET ─────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+img{display:block;max-width:100%}
+
+/* ─── TOKENS ─────────────────────────────────────── */
+:root{
+  --teal:       #1F4E4A;
+  --teal-dk:    #163835;
+  --teal-lt:    #e8f0ef;
+  --sage:       #7A9B76;
+  --gold:       #C9A646;
+  --gold-lt:    #f5e9be;
+  --ivory:      #FAF7F2;
+  --white:      #FFFFFF;
+  --ink:        #1E1E1E;
+  --muted:      #6B6B6B;
+  --border:     #E4DED6;
+  --fh:         'Playfair Display', Georgia, serif;
+  --fb:         'Plus Jakarta Sans', sans-serif;
+  --r:          14px;
+  --shadow:     0 4px 24px rgba(31,78,74,.09);
+}
+
+/* ─── BASE ────────────────────────────────────────── */
+body{
+  background:var(--ivory);
+  color:var(--ink);
+  font-family:var(--fb);
+  font-size:16px;
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.wrap{
+  width:100%;
+  max-width:620px;
+  margin:0 auto;
+  padding:0 20px;
+}
+
+/* ─── SECTION RHYTHM ────────────────────────────── */
+.sec{padding:56px 0}
+.sec--ivory{background:var(--ivory)}
+.sec--white{background:var(--white)}
+.sec--teal{background:var(--teal)}
+
+/* ─── LABEL ──────────────────────────────────────── */
+.lbl{
+  display:inline-block;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--sage);
+  margin-bottom:10px;
+}
+.lbl--gold{color:var(--gold)}
+.lbl--light{color:rgba(255,255,255,.55)}
+
+/* ─── HEADINGS ───────────────────────────────────── */
+.h1{
+  font-family:var(--fh);
+  font-size:clamp(28px,6vw,46px);
+  font-weight:700;
+  line-height:1.18;
+  letter-spacing:-.02em;
+  color:var(--teal);
+}
+.h2{
+  font-family:var(--fh);
+  font-size:clamp(22px,4.5vw,34px);
+  font-weight:700;
+  line-height:1.22;
+  letter-spacing:-.02em;
+  color:var(--teal);
+  margin-bottom:12px;
+}
+.h2--white{color:#fff}
+.h3{
+  font-family:var(--fb);
+  font-size:16px;
+  font-weight:700;
+  color:var(--teal);
+  margin-bottom:4px;
+}
+
+/* ─── BODY TEXT ──────────────────────────────────── */
+.body{
+  font-size:clamp(14px,2.4vw,16px);
+  color:var(--muted);
+  line-height:1.75;
+}
+.body+.body{margin-top:12px}
+.body--white{color:rgba(255,255,255,.8)}
+.body--ink{color:var(--ink)}
+
+/* ─── DIVIDER LINE ───────────────────────────────── */
+.rule{width:40px;height:3px;background:var(--gold);border-radius:3px;margin:14px 0 22px}
+
+/* ─── BUTTON ─────────────────────────────────────── */
+.btn{
+  display:block;
+  width:100%;
+  padding:17px 24px;
+  border:none;
+  border-radius:50px;
+  font-family:var(--fb);
+  font-size:15px;
+  font-weight:700;
+  text-align:center;
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.btn--gold{
+  background:var(--gold);
+  color:var(--teal-dk);
+  animation:pulse-gold 2.8s ease-in-out infinite;
+}
+.btn--gold:hover{background:#d4a932;transform:translateY(-2px);box-shadow:0 10px 28px rgba(201,166,70,.38);animation:none}
+.btn--teal{
+  background:var(--teal);
+  color:#fff;
+  animation:pulse-teal 2.8s ease-in-out infinite;
+}
+.btn--teal:hover{background:var(--teal-dk);transform:translateY(-2px);box-shadow:0 10px 28px rgba(31,78,74,.38);animation:none}
+
+@keyframes pulse-gold{
+  0%,100%{box-shadow:0 0 0 0 rgba(201,166,70,.4)}
+  50%{box-shadow:0 0 0 10px rgba(201,166,70,0)}
+}
+@keyframes pulse-teal{
+  0%,100%{box-shadow:0 0 0 0 rgba(31,78,74,.35)}
+  50%{box-shadow:0 0 0 10px rgba(31,78,74,0)}
+}
+
+/* ─── TRUST ROW ──────────────────────────────────── */
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}
+.trust__item{font-size:12px;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:5px}
+.trust__item b{color:var(--gold);font-weight:600}
+.trust--dark .trust__item{color:var(--muted)}
+.trust--dark .trust__item b{color:var(--sage)}
+
+/* ══════════════════════════════════════════════════
+   HERO
+══════════════════════════════════════════════════ */
+#hero{
+  position:relative;
+  /* fixed height so content is always visible */
+  min-height:520px;
+  background:var(--teal-dk);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+
+.hero__img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 20%;
+  opacity:.6;
+}
+
+/* strong gradient so text always readable */
+.hero__grad{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    180deg,
+    rgba(22,56,53,.25) 0%,
+    rgba(22,56,53,.55) 45%,
+    rgba(22,56,53,.92) 80%,
+    rgba(22,56,53,1) 100%
+  );
+}
+
+.hero__body{
+  position:relative;
+  z-index:2;
+  padding:32px 24px 40px;
+  max-width:620px;
+  margin:0 auto;
+  width:100%;
+}
+
+.hero__body .h1{color:#fff}
+.hero__sub{
+  font-size:clamp(14px,3vw,16px);
+  color:rgba(255,255,255,.78);
+  margin:12px 0 24px;
+  line-height:1.65;
+}
+
+/* ══════════════════════════════════════════════════
+   PAIN
+══════════════════════════════════════════════════ */
+.pain__img{
+  width:100%;
+  border-radius:var(--r);
+  overflow:hidden;
+  margin-bottom:28px;
+  box-shadow:var(--shadow);
+  /* constrained height */
+  max-height:300px;
+}
+.pain__img img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  object-position:center 25%;
+}
+
+.pain__list{list-style:none;margin:20px 0;display:flex;flex-direction:column;gap:10px}
+.pain__item{
+  padding:13px 16px 13px 46px;
+  position:relative;
+  font-size:15px;
+  color:var(--ink);
+  background:var(--ivory);
+  border-radius:10px;
+  border-left:3px solid var(--border);
+  line-height:1.55;
+}
+.pain__item::before{
+  content:attr(data-icon);
+  position:absolute;
+  left:13px;
+  top:13px;
+  font-size:17px;
+  line-height:1;
+}
+.pain__item strong{color:var(--teal)}
+
+.pain__callout{
+  background:var(--teal);
+  border-radius:var(--r);
+  padding:22px 24px;
+  margin-top:24px;
+  color:#fff;
+  font-size:15px;
+  line-height:1.7;
+}
+.pain__callout strong{color:var(--gold)}
+
+/* ══════════════════════════════════════════════════
+   MECHANISM
+══════════════════════════════════════════════════ */
+.mech__cards{display:flex;flex-direction:column;gap:12px;margin-top:24px}
+.mech__card{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--white);
+  border-radius:var(--r);
+  padding:18px 20px;
+  box-shadow:var(--shadow);
+  border-left:4px solid var(--sage);
+}
+.mech__icon{
+  width:46px;height:46px;
+  border-radius:12px;
+  background:var(--teal);
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;flex-shrink:0;
+}
+.mech__text p{font-size:13px;color:var(--muted);margin:0}
+
+/* ══════════════════════════════════════════════════
+   PROOF
+══════════════════════════════════════════════════ */
+.proof__cards{display:flex;flex-direction:column;gap:14px;margin-top:24px}
+.proof__card{
+  background:var(--ivory);
+  border-radius:var(--r);
+  padding:22px;
+  border-left:4px solid var(--gold);
+  box-shadow:var(--shadow);
+}
+.proof__quote{
+  font-size:14px;
+  color:var(--ink);
+  font-style:italic;
+  line-height:1.75;
+  margin-bottom:10px;
+}
+.proof__meta{font-size:12px;font-weight:700;color:var(--sage)}
+
+/* ══════════════════════════════════════════════════
+   PRODUCT
+══════════════════════════════════════════════════ */
+.product__mockup{
+  width:100%;
+  border-radius:var(--r);
+  overflow:hidden;
+  box-shadow:0 8px 40px rgba(31,78,74,.16);
+  margin-bottom:28px;
+  /* limit mockup height */
+  max-height:360px;
+}
+.product__mockup img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  object-position:center top;
+}
+
+.product__items{display:flex;flex-direction:column;gap:12px}
+.product__item{
+  background:var(--white);
+  border-radius:var(--r);
+  padding:18px 20px;
+  display:flex;gap:14px;align-items:flex-start;
+  box-shadow:var(--shadow);
+}
+.product__icon{
+  width:44px;height:44px;border-radius:10px;
+  background:linear-gradient(135deg,var(--teal),var(--sage));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;flex-shrink:0;
+}
+.product__item p{font-size:13px;color:var(--muted);margin:0}
+.badge{
+  display:inline-block;
+  background:var(--gold);color:var(--teal-dk);
+  font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:2px 8px;border-radius:20px;margin-bottom:4px;
+}
+
+/* ══════════════════════════════════════════════════
+   HOW IT WORKS
+══════════════════════════════════════════════════ */
+.steps{display:flex;flex-direction:column;gap:0;margin-top:24px}
+.step{display:flex;gap:18px;align-items:flex-start;padding-bottom:24px;position:relative}
+.step:last-child{padding-bottom:0}
+.step__left{display:flex;flex-direction:column;align-items:center}
+.step__num{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--teal);color:#fff;
+  font-family:var(--fh);font-size:18px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.step__line{width:2px;flex:1;min-height:20px;background:var(--border);margin-top:4px}
+.step:last-child .step__line{display:none}
+.step__body{padding-top:7px}
+.step__body p{font-size:13px;color:var(--muted);margin:0}
+
+/* ══════════════════════════════════════════════════
+   FOR WHO
+══════════════════════════════════════════════════ */
+.checks{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.checks li{
+  display:flex;gap:12px;align-items:flex-start;
+  font-size:15px;color:var(--ink);line-height:1.55;
+}
+.chk{
+  width:22px;height:22px;border-radius:50%;
+  background:var(--sage);display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.chk svg{width:11px;height:11px}
+
+/* ══════════════════════════════════════════════════
+   CTA SECTION
+══════════════════════════════════════════════════ */
+.cta__img{
+  width:100%;
+  max-height:280px;
+  overflow:hidden;
+  position:relative;
+}
+.cta__img img{
+  width:100%;
+  height:280px;
+  object-fit:cover;
+  object-position:center 30%;
+}
+.cta__img::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,transparent 30%,rgba(255,255,255,.95) 100%);
+}
+
+.cta__box{
+  background:var(--white);
+  padding:40px 24px 52px;
+  text-align:center;
+}
+.cta__box .wrap{text-align:center}
+
+.price{margin:20px 0 28px}
+.price__old{
+  font-size:17px;color:var(--muted);
+  text-decoration:line-through;
+  display:block;margin-bottom:4px;
+}
+.price__new{
+  font-family:var(--fh);
+  font-size:clamp(40px,8vw,54px);
+  font-weight:700;color:var(--teal);
+  line-height:1;display:block;
+}
+.price__note{font-size:12px;color:var(--muted);margin-top:6px}
+
+/* ══════════════════════════════════════════════════
+   STICKY CTA
+══════════════════════════════════════════════════ */
+#sticky{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--teal-dk);
+  padding:10px 20px 14px;
+  z-index:900;
+  transform:translateY(110%);
+  transition:transform .4s cubic-bezier(.22,1,.36,1);
+  box-shadow:0 -4px 20px rgba(0,0,0,.18);
+}
+#sticky.on{transform:translateY(0)}
+#sticky .btn{padding:13px 20px;font-size:14px}
+#sticky p{font-size:11px;color:rgba(255,255,255,.5);text-align:center;margin-top:5px}
+
+/* ══════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════ */
+footer{
+  background:var(--teal);color:rgba(255,255,255,.45);
+  text-align:center;padding:28px 20px 48px;
+  font-size:12px;line-height:1.8;
+}
+footer strong{color:rgba(255,255,255,.8)}
+
+/* ══════════════════════════════════════════════════
+   FADE-UP
+══════════════════════════════════════════════════ */
+.fu{opacity:0;transform:translateY(26px);transition:opacity .52s ease-out,transform .52s ease-out}
+.fu.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}
+.d2{transition-delay:.18s}
+.d3{transition-delay:.26s}
+
+/* ══════════════════════════════════════════════════
+   DESKTOP BUMP
+══════════════════════════════════════════════════ */
+@media(min-width:680px){
+  .sec{padding:72px 0}
+  #hero{min-height:580px}
+  .hero__body{padding:40px 40px 52px}
+  .pain__img{max-height:340px}
+  .pain__img img{height:340px}
+  .product__mockup{max-height:420px}
+  .product__mockup img{height:420px}
+  .cta__img{max-height:320px}
+  .cta__img img{height:320px}
+  #sticky{max-width:620px;left:50%;transform:translateX(-50%) translateY(110%);border-radius:14px 14px 0 0}
+  #sticky.on{transform:translateX(-50%) translateY(0)}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ════════════ HERO ════════════ -->
+<section id="hero">
+  <img class="hero__img"
+    src="https://drive.google.com/thumbnail?id=14Z86JHueYducYF740ap9KwMQ9Yoh9kqR&sz=w1200"
+    alt="Wanita melakukan gerakan Tai Chi di rumah"
+    fetchpriority="high"
+  />
+  <div class="hero__grad"></div>
+  <div class="hero__body">
+    <span class="lbl lbl--gold fu">Program 7 Hari · Mulai Hari Ini</span>
+    <h1 class="h1 fu d1">Mulai Gampang Lupa? Susah Fokus? Tapi Nggak Mau Olahraga Berat?</h1>
+    <p class="hero__sub fu d2">Coba rutinitas ini — 10 menit sehari, 7 hari, dari rumah.<br>Nggak perlu pengalaman Tai Chi sama sekali.</p>
+    <a href="#cta-section" class="btn btn--gold fu d3">Ya, Saya Mau Coba Sekarang →</a>
+    <div class="trust fu d3">
+      <div class="trust__item"><b>✓</b> Akses seumur hidup</div>
+      <div class="trust__item"><b>✓</b> Download langsung</div>
+      <div class="trust__item"><b>✓</b> Pembayaran aman</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PAIN ════════════ -->
+<section class="sec sec--white">
+  <div class="wrap">
+    <div class="pain__img fu">
+      <img
+        src="https://drive.google.com/thumbnail?id=1pJoLDC_drZOwrzzaFvHj7KWxNdLAhAiG&sz=w1200"
+        alt="Seseorang duduk blank di depan laptop"
+        loading="lazy"
+      />
+    </div>
+    <span class="lbl fu">Kamu pernah ngerasain ini?</span>
+    <h2 class="h2 fu">Kalau Ini Rasanya Familiar, Baca Terus</h2>
+    <div class="rule fu"></div>
+    <ul class="pain__list fu">
+      <li class="pain__item" data-icon="💭">Lagi ngobrol, tiba-tiba lupa mau bilang apa. Padahal tadi udah ada di ujung lidah.</li>
+      <li class="pain__item" data-icon="📱">Duduk mau kerja, tapi pikiran nggak bisa settle. Scrolling dulu sebentar — eh udah sejam.</li>
+      <li class="pain__item" data-icon="😮‍💨">Pengen mulai jaga badan, tapi begitu bayangin olahraga… langsung <strong>males duluan.</strong> Lutut nggak kuat, napas cepet habis, badan gampang pegal.</li>
+    </ul>
+    <div class="pain__callout fu">
+      Kamu bukan malas. Kamu cuma <strong>belum ketemu cara yang pas.</strong>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ MECHANISM ════════════ -->
+<section class="sec sec--ivory">
+  <div class="wrap">
+    <span class="lbl fu">Kenapa ini beda</span>
+    <h2 class="h2 fu">Otak Juga Bisa Dilatih Lewat Gerakan Tubuh</h2>
+    <div class="rule fu"></div>
+    <p class="body fu">Bukan cuma dari baca buku atau main catur. Waktu kamu gerakin tubuh pelan-pelan, atur napas, terus coba ingat urutan gerakannya — otak kamu ikut kerja. Aktif. Tapi nggak capek.</p>
+    <p class="body fu">Itu yang kita pakai di <strong style="color:var(--teal)">Memory Taichi</strong> lewat metode <strong style="color:var(--teal)">Gerak–Napas–Ingat.</strong></p>
+    <div class="mech__cards">
+      <div class="mech__card fu">
+        <div class="mech__icon">🤲</div>
+        <div class="mech__text">
+          <h3 class="h3">Gerak</h3>
+          <p>Gerakan Tai Chi pelan dan lembut. Aman buat lutut, aman buat punggung, aman buat yang udah lama nggak olahraga.</p>
+        </div>
+      </div>
+      <div class="mech__card fu d1">
+        <div class="mech__icon">🌬️</div>
+        <div class="mech__text">
+          <h3 class="h3">Napas</h3>
+          <p>Setiap gerakan dipadukan dengan ritme napas. Bikin tubuh rileks dan pikiran lebih gampang fokus.</p>
+        </div>
+      </div>
+      <div class="mech__card fu d2">
+        <div class="mech__icon">🧠</div>
+        <div class="mech__text">
+          <h3 class="h3">Ingat</h3>
+          <p>Kamu ingat urutan gerakan tanpa lihat panduan. Di sinilah otak ikut bekerja — ringan, tapi nyata.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PROOF ════════════ -->
+<section class="sec sec--white">
+  <div class="wrap">
+    <span class="lbl fu">Yang udah merasakan</span>
+    <h2 class="h2 fu">Orang-Orang yang Udah Coba Bilang Apa?</h2>
+    <div class="rule fu"></div>
+    <div class="proof__cards">
+      <div class="proof__card fu">
+        <p class="proof__quote">"Sebelumnya saya sering banget blank di tengah-tengah ngobrol. Setelah hari ke-3, badan mulai terasa lebih 'hadir'. Hari ke-7, untuk pertama kalinya saya bisa ulang semua gerakan dari ingatan — tanpa lihat panduan sama sekali."</p>
+        <div class="proof__meta">— Ibu rumah tangga, 52 tahun, Surabaya</div>
+      </div>
+      <div class="proof__card fu d1">
+        <p class="proof__quote">"Awalnya saya ragu, masa gerakan slow kayak gini ngefek? Setelah seminggu, pikiran saya jauh lebih gampang balik fokus setelah kena distraksi. Itu aja udah cukup buat saya."</p>
+        <div class="proof__meta">— Karyawan kantoran, 41 tahun, Jakarta</div>
+      </div>
+      <div class="proof__card fu d2">
+        <p class="proof__quote">"Ini program pertama yang bisa saya selesaikan sampai hari ke-7. Alasannya simpel: gerakannya ringan dan tiap hari ada panduannya. Nggak perlu mikir hari ini mau ngapain."</p>
+        <div class="proof__meta">— Pensiunan guru, 61 tahun</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ PRODUCT ════════════ -->
+<section class="sec sec--ivory">
+  <div class="wrap">
+    <span class="lbl fu">Yang kamu dapetin</span>
+    <h2 class="h2 fu">Lengkap. Langsung Bisa Dipakai.</h2>
+    <div class="rule fu"></div>
+    <div class="product__mockup fu">
+      <img
+        src="https://drive.google.com/thumbnail?id=13NVf2-GmUDod32M5ljlTTBSn29xxmADX&sz=w1200"
+        alt="Mockup produk Memory Taichi"
+        loading="lazy"
+      />
+    </div>
+    <div class="product__items">
+      <div class="product__item fu">
+        <div class="product__icon">📘</div>
+        <div>
+          <h3 class="h3">Memory Taichi — Ebook Utama</h3>
+          <p>Panduan 7 hari lengkap. Lima gerakan dasar, cara mengatur napas, sampai latihan ingat urutan tanpa lihat panduan. Langsung ke praktik, bukan teori panjang.</p>
+        </div>
+      </div>
+      <div class="product__item fu d1">
+        <div class="product__icon">📋</div>
+        <div>
+          <h3 class="h3">Memory Taichi Quick Start Kit</h3>
+          <p>Tracker harian + panduan per hari siap pakai. Tinggal ikutin, checklist, selesai. Nggak perlu mikir hari ini mau latihan apa.</p>
+        </div>
+      </div>
+      <div class="product__item fu d2">
+        <div class="product__icon">⚡</div>
+        <div>
+          <div class="badge">Bonus</div>
+          <h3 class="h3">5-Minute Anti-Blank Routine</h3>
+          <p>Buat hari-hari waktu pikiran terasa penuh atau badan malas gerak. Tiga gerakan, lima menit, langsung bisa dipake kapan aja.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ HOW IT WORKS ════════════ -->
+<section class="sec sec--white">
+  <div class="wrap">
+    <span class="lbl fu">Cara kerjanya</span>
+    <h2 class="h2 fu">Mulainya Gampang Banget</h2>
+    <div class="rule fu"></div>
+    <div class="steps">
+      <div class="step fu">
+        <div class="step__left"><div class="step__num">1</div><div class="step__line"></div></div>
+        <div class="step__body">
+          <h3 class="h3">Bayar → langsung download</h3>
+          <p>Semua file PDF bisa langsung dibuka di HP atau laptop. Nggak perlu install apapun.</p>
+        </div>
+      </div>
+      <div class="step fu d1">
+        <div class="step__left"><div class="step__num">2</div><div class="step__line"></div></div>
+        <div class="step__body">
+          <h3 class="h3">Mulai Hari 1 — cukup 10 menit</h3>
+          <p>Nggak perlu ruang luas, nggak perlu alat, nggak perlu pemanasan panjang.</p>
+        </div>
+      </div>
+      <div class="step fu d2">
+        <div class="step__left"><div class="step__num">3</div><div class="step__line"></div></div>
+        <div class="step__body">
+          <h3 class="h3">Ikutin tiap hari sampai Hari 7</h3>
+          <p>Setiap hari ada panduan baru. Makin lama makin kamu hafal sendiri.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOR WHO ════════════ -->
+<section class="sec sec--ivory">
+  <div class="wrap">
+    <span class="lbl fu">Ini buat kamu</span>
+    <h2 class="h2 fu">Cocok Kalau Kamu...</h2>
+    <div class="rule fu"></div>
+    <ul class="checks">
+      <li class="fu"><div class="chk"><svg viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Usia 35 ke atas dan mulai ngerasa beda — lebih gampang lupa, lebih susah fokus</li>
+      <li class="fu d1"><div class="chk"><svg viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Udah lama nggak olahraga dan nggak mau yang berat-berat</li>
+      <li class="fu d2"><div class="chk"><svg viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Belum pernah Tai Chi sama sekali — dan memang nggak perlu</li>
+      <li class="fu d3"><div class="chk"><svg viewBox="0 0 11 11" fill="none"><path d="M1.5 5.5l3 3 5-5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Mau sesuatu yang bisa langsung dipraktikkan hari ini, bukan besok-besok</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════════════ CTA ════════════ -->
+<section id="cta-section" class="sec--white" style="padding:0">
+  <div class="cta__img">
+    <img
+      src="https://drive.google.com/thumbnail?id=1z3kd0W8HcqU2TtQ7-r47xephggefLQ2c&sz=w1200"
+      alt="Seseorang rileks setelah latihan Memory Taichi"
+      loading="lazy"
+    />
+  </div>
+  <div class="cta__box">
+    <div class="wrap">
+      <span class="lbl fu">Harga hari ini</span>
+      <h2 class="h2 fu">Sekali Bayar. Akses Selamanya.</h2>
+      <div class="rule fu" style="margin:14px auto 22px"></div>
+      <p class="body fu" style="font-size:14px">Sudah termasuk ebook utama, Quick Start Kit, dan bonus 5-Minute Anti-Blank Routine.</p>
+      <div class="price fu">
+        <span class="price__old">Rp 297.000</span>
+        <span class="price__new">Rp 178.000</span>
+        <span class="price__note">Harga bisa naik kapan saja tanpa pemberitahuan.</span>
+      </div>
+      <a href="#" class="btn btn--teal fu">Ya, Saya Mau Mulai Hari Ini →</a>
+      <div class="trust trust--dark fu d1" style="justify-content:center;margin-top:16px">
+        <div class="trust__item"><b>✓</b> Akses seumur hidup</div>
+        <div class="trust__item"><b>✓</b> Download langsung</div>
+        <div class="trust__item"><b>✓</b> Tanpa biaya bulanan</div>
+        <div class="trust__item"><b>✓</b> Pembayaran aman</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <strong>Memory Taichi</strong><br>
+  Rutinitas Tai Chi 7 Hari untuk Bantu Otak Tetap Aktif Tanpa Olahraga Berat<br><br>
+  © 2025 Memory Taichi. Semua hak dilindungi.
+</footer>
+
+<!-- ════════════ STICKY CTA ════════════ -->
+<div id="sticky">
+  <a href="#cta-section" class="btn btn--gold">Ya, Saya Mau Mulai Hari Ini →</a>
+  <p>Rp 178.000 · Sekali bayar · Akses selamanya</p>
+</div>
+
+<!-- ════════════ JS ════════════ -->
+<script>
+// Fade-up observer
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('on') });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fu').forEach(el => io.observe(el));
+
+// Hero fires immediately on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('#hero .fu').forEach((el,i) => {
+    setTimeout(() => el.classList.add('on'), 100 + i * 80);
+  });
+});
+
+// Sticky CTA
+const sticky = document.getElementById('sticky');
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+  sticky.classList.toggle('on', pct > 0.22);
+}, { passive: true });
+</script>
+</body>
+</html>
